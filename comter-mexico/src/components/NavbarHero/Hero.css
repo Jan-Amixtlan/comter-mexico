@@ -59,6 +59,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0;
+    height: 110px;
 }
 
 /* Logo Styles */
@@ -67,8 +68,8 @@
 }
 
 .logo-img {
-    height: 28px;
-    width: auto;
+    height: 110px;
+    width: 110px;
     object-fit: contain;
 }
 
@@ -78,7 +79,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 20px;
+    gap: 35px;
     align-items: center;
 }
 
@@ -297,13 +298,22 @@
 
 /* Animation for smooth scrolling offset */
 body {
-    padding-top: 30px;
-    /* Adjust based on header height */
+    padding-top: 130px;
+    /* Adjust based on header height: top-bar + nav-content (20px + 110px) */
 }
 
 @media (max-width: 768px) {
     body {
-        padding-top: 25px;
+        padding-top: 90px;
+    }
+
+    .nav-content {
+        height: 70px;
+    }
+
+    .logo-img {
+        height: 60px;
+        width: 60px;
     }
 }
 

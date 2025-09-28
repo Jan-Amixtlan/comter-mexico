@@ -36,7 +36,7 @@ const Hero = () => {
                     <div className="nav-content">
                         {/* Logo */}
                         <div className="logo">
-                            <img src="/api/placeholder/120/60" alt="Comter" className="logo-img" />
+                            <img src="/LogoComter.png" alt="Comter" className="logo-img" />
                         </div>
 
                         {/* Desktop Navigation */}
