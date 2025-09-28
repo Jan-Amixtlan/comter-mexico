@@ -1,0 +1,319 @@
+/* Header.css */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Top Bar Styles */
+.top-bar {
+    background: linear-gradient(135deg, #2c9faf 0%, #1e7a8a 100%);
+    padding: 0;
+    font-size: 14px;
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 300;
+    transition: transform 0.2s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-1px);
+}
+
+.contact-item .icon {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* Main Navigation Styles */
+.main-nav {
+    background: white;
+    padding: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+/* Logo Styles */
+.logo {
+    flex-shrink: 0;
+}
+
+.logo-img {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Desktop Navigation */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #2c9faf;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(135deg, #2c9faf, #1e7a8a);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Contact Button */
+.contact-btn {
+    background: linear-gradient(135deg, #2c9faf 0%, #1e7a8a 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(44, 159, 175, 0.3);
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 159, 175, 0.4);
+}
+
+.contact-btn:active {
+    transform: translateY(0);
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    gap: 4px;
+}
+
+.mobile-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #e5e5e5;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.mobile-nav-list li {
+    padding: 0 20px;
+}
+
+.mobile-nav-link {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+    color: #2c9faf;
+}
+
+.mobile-contact-btn {
+    background: linear-gradient(135deg, #2c9faf 0%, #1e7a8a 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.mobile-contact-btn:hover {
+    opacity: 0.9;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .contact-info {
+        justify-content: center;
+    }
+
+    .nav-menu {
+        gap: 20px;
+    }
+
+    .nav-link {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 10px 0;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .contact-item {
+        justify-content: center;
+        font-size: 13px;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .contact-btn {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .nav-content {
+        padding: 12px 0;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .contact-item span:not(.icon) {
+        font-size: 12px;
+    }
+
+    .contact-item:last-child span:not(.icon) {
+        display: none;
+    }
+
+    .contact-item:last-child::after {
+        content: "Jalisco, Mexico";
+        font-size: 12px;
+    }
+}
+
+/* Animation for smooth scrolling offset */
+body {
+    padding-top: 30px;
+    /* Adjust based on header height */
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 25px;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+
+    .nav-link::after,
+    .contact-btn,
+    .mobile-nav-link,
+    .contact-item {
+        transition: none;
+    }
+}
