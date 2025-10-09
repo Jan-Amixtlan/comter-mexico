@@ -1,0 +1,429 @@
+/* Video Carousel Section */
+.video-carousel-section {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh + 150px);
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    margin: 0;
+    padding: 0;
+    margin-top: -150px;
+}
+
+.video-carousel-section:active {
+    transform: scale(0.999);
+}
+
+.video-carousel-section:hover {
+    cursor: pointer;
+}
+
+.video-carousel-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(0, 191, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 60%, transparent 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.video-carousel-section:active::before {
+    width: 400px;
+    height: 400px;
+    opacity: 1;
+}
+
+@keyframes water-ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Video Background */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.video-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(1.1);
+    transform-origin: center center;
+    transition: opacity 1.2s cubic-bezier(0.4, 0.0, 0.2, 1),
+                transform 1.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.video-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    animation: zoom-from-center 1.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.video-slide.transitioning {
+    opacity: 0;
+    transform: scale(1.15);
+    transition: opacity 0.8s cubic-bezier(0.4, 0.0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+@keyframes zoom-from-center {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: brightness(1) contrast(1.05);
+    transform-origin: center center;
+    transition: all 1.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.video-slide.active .background-video {
+    animation: water-zoom 12s ease-in-out infinite;
+}
+
+.video-slide.transitioning .background-video {
+    filter: brightness(0.95) contrast(1.05);
+}
+
+@keyframes water-zoom {
+    0% {
+        transform: scale(1);
+        filter: brightness(1) contrast(1.05);
+    }
+    25% {
+        transform: scale(1.01);
+        filter: brightness(1.02) contrast(1.06);
+    }
+    50% {
+        transform: scale(1.03);
+        filter: brightness(1.05) contrast(1.08);
+    }
+    75% {
+        transform: scale(1.02);
+        filter: brightness(1.03) contrast(1.07);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(1) contrast(1.05);
+    }
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 20, 40, 0.1) 0%,
+        rgba(0, 50, 100, 0.05) 50%,
+        rgba(0, 0, 0, 0.15) 100%
+    );
+    pointer-events: none;
+}
+
+/* Content Overlay */
+.carousel-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Brand Text */
+.brand-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    padding: 2rem 0;
+}
+
+.carousel-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 0.95;
+    margin: 0;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: fade-slide-in 1s ease-out;
+}
+
+@keyframes fade-slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo Section */
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-right: 4rem;
+}
+
+.tech-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-animation {
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(0, 191, 255, 0.3);
+    border-radius: 50%;
+    position: relative;
+    animation: pulse-circle 3s ease-in-out infinite;
+}
+
+.circle-animation::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    border: 2px solid rgba(0, 191, 255, 0.6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-circle 3s ease-in-out infinite 0.5s;
+}
+
+.circle-animation::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    border: 2px solid rgba(0, 191, 255, 0.9);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-circle 3s ease-in-out infinite 1s;
+}
+
+@keyframes pulse-circle {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+.brand-logo {
+    text-align: left;
+}
+
+.comter-text {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #00bfff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    display: block;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+}
+
+.tagline strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Video Counter */
+.video-counter {
+    align-self: flex-end;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.current-slide {
+    color: #00bfff;
+    font-weight: 500;
+}
+
+.separator {
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+    
+    .logo-section {
+        margin-right: 0;
+        gap: 2rem;
+    }
+    
+    .tech-circle {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .comter-text {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-content {
+        padding: 1.5rem;
+    }
+    
+    .main-content {
+        gap: 2rem;
+        padding: 1rem 0;
+    }
+    
+    .logo-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .tech-circle {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .comter-text {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+
+}
+
+@media (max-width: 480px) {
+    .carousel-content {
+        padding: 1rem;
+    }
+    
+    .brand-text {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+    
+    .carousel-title {
+        font-size: 2.5rem;
+    }
+    
+    .tech-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .comter-text {
+        font-size: 1.8rem;
+    }
+    
+
+    
+    .video-counter {
+        font-size: 1.2rem;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .background-video,
+    .circle-animation,
+    .circle-animation::before,
+    .circle-animation::after,
+    .video-slide,
+    .video-carousel-section,
+    .video-carousel-section::before {
+        animation: none;
+        transition: none;
+    }
+}
